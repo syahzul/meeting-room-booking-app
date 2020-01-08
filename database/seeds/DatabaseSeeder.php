@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Room::class, 12)->create();
+        \Illuminate\Support\Facades\DB::table('rooms')->truncate();
+        \Illuminate\Support\Facades\DB::table('users')->truncate();
+        factory(\App\User::class, 10)->create();
+        factory(\App\Room::class, 6)->create();
     }
 }
