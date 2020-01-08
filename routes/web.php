@@ -39,4 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/room/{room}', 'RoomController@update')
         ->name('rooms.update');
 
+    Route::delete('/room/{room}', 'RoomController@destroy')
+        ->name('rooms.delete');
+
 });

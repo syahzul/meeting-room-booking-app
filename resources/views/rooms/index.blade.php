@@ -84,9 +84,16 @@
                                                 <a href="{{ route('rooms.edit', $room) }}" class="btn btn-warning">
                                                     Edit
                                                 </a>
-                                                <a href="#" class="btn btn-danger">
+                                                <a href="{{ route('rooms.delete', $room) }}" class="btn btn-danger" onclick="event.preventDefault();
+                                                     document.getElementById('room-delete-{{ $room->id }}').submit();">
                                                     Delete
                                                 </a>
+                                                <form id="room-delete-{{ $room->id }}"
+                                                      action="{{ route('rooms.delete', $room) }}"
+                                                      method="POST" style="display: none;">
+                                                    @csrf
+                                                    {{ method_field('delete') }}
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

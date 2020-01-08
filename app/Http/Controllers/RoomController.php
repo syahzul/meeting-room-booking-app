@@ -69,6 +69,20 @@ class RoomController extends Controller
     }
 
     /**
+     * @param Room $room
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function destroy(Room $room)
+    {
+        $room->delete();
+
+        flash()->success('Room deleted!');
+
+        return redirect()->route('rooms.index');
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
