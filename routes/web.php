@@ -22,8 +22,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/rooms', 'RoomController@index')
     ->name('rooms.index');
 
-Route::get('/room/{room}', 'RoomController@book')
-    ->name('rooms.book');
+Route::group(['middleware' => 'auth'], function () {
 
-Route::post('/room', 'RoomController@store')
-    ->name('rooms.store');
+    Route::get('/room', 'RoomController@create')
+        ->name('rooms.create');
+
+    Route::post('/room', 'RoomController@store')
+        ->name('rooms.store');
+
+    Route::get('/room/book/{room}', 'RoomController@book')
+        ->name('rooms.book');
+
+});
