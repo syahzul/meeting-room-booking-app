@@ -23,9 +23,11 @@
                     @foreach ($rooms as $room)
                         <div class="col-md-4 col-sm-2 mb-3">
                             <div class="card">
-                                <div class="card-header">{{ $room->name }}</div>
+                                <div class="card-header">
+                                    {{ $room->name }}
+                                </div>
                                 <div class="card-body">
-                                    {{ $room->description }}
+                                    {{ Str::words($room->description, 10) }}
 
                                     <hr>
 
@@ -71,9 +73,23 @@
                                 </div><!-- /.card-body -->
 
                                 <div class="card-footer">
-                                    <a href="{{ route('rooms.book', $room) }}" class="btn btn-info btn-block">
-                                        Book This Room
-                                    </a>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <a href="{{ route('rooms.book', $room) }}" class="btn btn-info btn-block">
+                                                Book This Room
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="float-right">
+                                                <a href="{{ route('rooms.edit', $room) }}" class="btn btn-warning">
+                                                    Edit
+                                                </a>
+                                                <a href="#" class="btn btn-danger">
+                                                    Delete
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
