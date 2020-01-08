@@ -4,7 +4,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h1>Rooms</h1>
+            <h1 class="mb-4">
+                Rooms
+
+                <a href="{{ route('rooms.create') }}" class="btn btn-success float-right">
+                    Register Room
+                </a>
+            </h1>
 
             @if (session('status'))
                 <div class="alert alert-success" role="alert">
@@ -53,7 +59,7 @@
                                     </div><!-- /.row -->
 
                                     <div class="row">
-                                        <div class="col">WiFi</div>
+                                        <div class="col">Wi-Fi</div>
                                         <div class="col text-right">
                                             @if ($room->wifi)
                                                 Yes
@@ -65,7 +71,7 @@
                                 </div><!-- /.card-body -->
 
                                 <div class="card-footer">
-                                    <a href="{{ route('rooms.book', $room) }}" class="btn btn-success btn-block">
+                                    <a href="{{ route('rooms.book', $room) }}" class="btn btn-info btn-block">
                                         Book This Room
                                     </a>
                                 </div>
@@ -73,6 +79,10 @@
                         </div>
                     @endforeach
                 </div><!-- /.row -->
+
+                <div class="row justify-content-center mt-3 mb-3">
+                    {{ $rooms->links() }}
+                </div>
             @else
                 <div class="text-danger text-center mt-5">
                     No room available.
