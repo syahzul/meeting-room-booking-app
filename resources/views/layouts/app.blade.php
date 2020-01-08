@@ -73,7 +73,16 @@
         </nav>
 
         <main class="py-4">
-            @include('flash::message')
+            @if (session()->has('flash_notification'))
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            @include('flash::message')
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             @yield('content')
         </main>
     </div>
