@@ -40,6 +40,24 @@
                 </div><!-- /.form-group row -->
 
                 <div class="form-group row">
+                    <label class="col-form-label col-md-3">Description</label>
+                    <div class="col-md-8">
+                        <textarea
+                            name="description"
+                            class="form-control @error('description') is-invalid @enderror"
+                            required>{{ old('description') }}</textarea>
+                    </div>
+
+                    @error('description')
+                    <div class="col-md-9 offset-md-3">
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    </div>
+                    @enderror
+                </div><!-- /.form-group row -->
+
+                <div class="form-group row">
                     <label class="col-form-label col-md-3">Capacity</label>
                     <div class="col-md-2">
                         <input
