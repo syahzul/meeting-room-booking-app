@@ -43,6 +43,32 @@ class RoomController extends Controller
     }
 
     /**
+     * @param Room $room
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(Room $room)
+    {
+        return view('rooms.edit', compact('room'));
+    }
+
+    /**
+     * @param Room $room
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Room $room)
+    {
+        $input = request()->all();
+
+        $this->validator($input)->validate();
+
+        $room->update($input);
+
+        flash()->success('Room updated!');
+
+        return redirect()->route('rooms.index');
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data

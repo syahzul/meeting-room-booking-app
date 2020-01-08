@@ -33,4 +33,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/room/book/{room}', 'RoomController@book')
         ->name('rooms.book');
 
+    Route::get('/room/{room}', 'RoomController@edit')
+        ->name('rooms.edit');
+
+    Route::put('/room/{room}', 'RoomController@update')
+        ->name('rooms.update');
+
 });
